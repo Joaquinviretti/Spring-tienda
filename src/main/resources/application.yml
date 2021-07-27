@@ -1,0 +1,35 @@
+spring:
+  mail: 
+    host: joaquin.viretti@gmail.com
+    port: 587
+    properties:
+        mail:
+            smtp:              
+                auth: true
+                starttls:
+                    required: true
+                    enable: true
+    username: joaquin.viretti@gmail.com
+    password: miclavenahuelmdq
+ # Configuración MySQL
+  datasource: 
+    url: jdbc:mysql://localhost:3306/tiendaSpring?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver 
+# Configuaración Creacion de tablas (Hibernate)
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect      
+  thymeleaf:
+    cache: false 
+# Configuración para cambiar la pagina de error 
+server:
+  port : 8081
+  error:
+    whitelabel:
+      enabled: false
