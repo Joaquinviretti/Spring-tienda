@@ -16,6 +16,7 @@ public class Producto {
     private String nombre;
     private Integer precio;
     private String descripcion;
+    private Boolean activo;
     
     @OneToOne
     private Fabricante fabricante;
@@ -88,6 +89,20 @@ public class Producto {
      */
     public void setFabricante(Fabricante fabricante) {
         this.fabricante = fabricante;
+    }
+
+    /**
+     * @return the activo
+     */
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    /**
+     * @param activo the activo to set
+     */
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
     
     
