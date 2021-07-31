@@ -15,6 +15,7 @@ public class Fabricante {
     private String id;
     
     private String nombre;
+    private boolean activo;
 
     /**
      * @return the id
@@ -43,6 +44,21 @@ public class Fabricante {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    /**
+     * @return the activo
+     */
+    public boolean isActivo() {
+        return activo;
+    }
+
+    /**
+     * @param activo the activo to set
+     */
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+    
     
     
     

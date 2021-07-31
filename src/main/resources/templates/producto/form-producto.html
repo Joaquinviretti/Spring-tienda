@@ -25,10 +25,10 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <!-- En los href vamos a poner a que controlador se tiene que ir cuando se toque crear fabricantes-->
-                <li><a class="dropdown-item" href="#">Crear Fabricante</a></li>
+                <li><a class="dropdown-item" th:href="@{'/fabricante/crear'}">Crear Fabricante</a></li>
                 <li><hr class="dropdown-divider"></li>
               <!-- En los href vamos a poner a que controlador se tiene que ir cuando se toque listar fabricantes-->
-                <li><a class="dropdown-item" href="#">Listar Fabricantes</a></li>
+                <li><a class="dropdown-item" th:href="@{'/fabricante/listar'}">Listar Fabricantes</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -82,8 +82,8 @@
          <div class="mb-3">
 <!--             En este select vamos a poner a nuestros fabricantes para que el usuario 
              pueda elegir un fabricante para asignarle al producto.-->
-            <select class="form-select" aria-label="Default select example">
-                <option selected></option>
+            <select th:name="id" class="form-select" aria-label="Default select example">
+                <option th:each="fabricante : ${fabricantes}" th:value="${fabricante.id}" th:text="${fabricante.nombre}"></option>
             </select>
           </div>
       

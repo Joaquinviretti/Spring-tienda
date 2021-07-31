@@ -25,10 +25,10 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <!-- En los href vamos a poner a que controlador se tiene que ir cuando se toque crear fabricantes-->
-                <li><a class="dropdown-item" href="#">Crear Fabricante</a></li>
+                <li><a class="dropdown-item" th:href="@{'/fabricante/crear'}">Crear Fabricante</a></li>
                 <li><hr class="dropdown-divider"></li>
               <!-- En los href vamos a poner a que controlador se tiene que ir cuando se toque listar fabricantes-->
-                <li><a class="dropdown-item" href="#">Listar Fabricantes</a></li>
+                <li><a class="dropdown-item" th:href="@{'/fabricante/listar'}">Listar Fabricantes</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -84,7 +84,7 @@
                 <option selected></option>
             </select>
           </div>
-        <button type="submit" class="btn btn-primary">Editar</button>
+        <button th:value="${producto.id}" th:name="id" type="submit" class="btn btn-primary">Editar</button>
       </form>
 
     </div>

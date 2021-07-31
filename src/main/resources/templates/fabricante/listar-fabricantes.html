@@ -12,7 +12,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <!-- En los href vamos a poner a que controlador debe ir cuando se toque la palabra tienda egg-->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" th:href="@{'/'}">
           <img th:src="@{/img/logo-eggtech.png}" width="30" height="30" class="d-inline-block align-top" alt="">Tienda Egg</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -25,10 +25,10 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <!-- En los href vamos a poner a que controlador se tiene que ir cuando se toque crear fabricantes-->
-                <li><a class="dropdown-item" href="#">Crear Fabricante</a></li>
+                <li><a class="dropdown-item" th:href="@{'/fabricante/crear'}">Crear Fabricante</a></li>
                 <li><hr class="dropdown-divider"></li>
               <!-- En los href vamos a poner a que controlador se tiene que ir cuando se toque listar fabricantes-->
-                <li><a class="dropdown-item" href="#">Listar Fabricantes</a></li>
+                <li><a class="dropdown-item" th:href="@{'/fabricante/listar'}">Listar Fabricantes</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -59,12 +59,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
+                <tr th:each="fabricante : ${fabricantes}">
+                    <td th:text="${fabricante.nombre}"></td>
                     <td><a class="btn btn-primary btn-sm"
                         href="" th:text="'Editar'"></a></td>
                     <td><a class="btn btn-danger btn-sm"
-                        href="" th:text="'Dar Baja'"
+                        th:href="@{/fabricante/baja/(id=${fabricante.id})}" th:text="'Dar Baja'" 
                         onclick="return confirm('Estas seguro que quieres dar de baja?');"></a></td>
                 </tr>
             </tbody>
