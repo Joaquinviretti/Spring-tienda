@@ -44,6 +44,11 @@ public class ProductoServicio {
         return productoRepositorio.save(producto);         
     }
     
+    /* Buscar por ID */
+    @Transactional
+    public Producto buscarPorId(String id){
+        return productoRepositorio.getOne(id);
+    }
     
     /* Listar todos los productos */
     @Transactional
@@ -56,6 +61,22 @@ public class ProductoServicio {
     public void baja(String id){
         Producto producto = productoRepositorio.getOne(id);
         producto.setActivo(false);    
+    }
+    
+    /* modificar */
+    @Transactional
+    public void editar(String id, String nombre, Integer precio, String descripcion) throws ErrorServicio{
+        
+         validar(nombre,precio,descripcion);
+        
+        Producto producto = productoRepositorio.getById(id);
+        
+        producto.setNombre(nombre);
+        producto.setPrecio(precio);
+        producto.setDescripcion(descripcion);
+        
+        productoRepositorio.save(producto);
+   
     }
      
     /* Validar datos */

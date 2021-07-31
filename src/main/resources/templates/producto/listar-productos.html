@@ -68,9 +68,9 @@
                     <td th:text="${producto.descripcion}"></td>
                     <td></td>
                     <td><a class="btn btn-primary btn-sm"
-                        href="" th:text="'Editar'"></a></td>
+                        th:href="@{/producto/editar/(id=${producto.id})}" th:text="'Editar'"></a></td>
                     <td><a class="btn btn-danger btn-sm"
-                        th:href="@{'/producto/baja'}" th:text="'Dar Baja'"
+                        th:href="@{/producto/baja/(id=${producto.id})}" th:text="'Dar Baja'"
                         onclick="return confirm('Estas seguro que quieres dar de baja?');"></a></td>
                 </tr>
             </tbody>

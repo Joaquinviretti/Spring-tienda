@@ -9,6 +9,8 @@ import egg.tienda.productos.entidades.Producto;
 import egg.tienda.productos.errores.ErrorServicio;
 import egg.tienda.productos.servicios.ProductoServicio;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -51,18 +53,34 @@ public class ProductoController {
         }
     }
     
-    @PostMapping("/baja")
-    public String baja(ModelMap modelo){
+    @GetMapping("/baja")
+    public String baja(ModelMap modelo, @RequestParam(value = "id") String id){
         
+        productoServicio.baja(id);     
         List<Producto>productos = productoServicio.listar();
         modelo.put("productos", productos);
-        return "producto/listar-productos.html";
-        
+        return "producto/listar-productos.html";   
     }
     
     @GetMapping("/editar")
-    public String editar(ModelMap modelo){
+    public String editar(ModelMap modelo, @RequestParam(value = "id") String id){   
+        Producto producto = productoServicio.buscarPorId(id);      
+        modelo.put("producto", producto);
+        modelo.put("id", id);
         return "producto/form-producto-editar.html";
+    }
+    
+    @PostMapping("/editar")
+    public String modificar(ModelMap modelo, @RequestParam String id, @RequestParam String nombre, @RequestParam Integer precio, @RequestParam String descripcion){
+        
+        try {
+            productoServicio.editar(id, nombre, precio, descripcion);
+            modelo.put("exito", true);
+            return "producto/form-producto-editar.html";
+        } catch (ErrorServicio ex) {
+            modelo.put("errror", true);
+            return "producto/form-producto-editar.html";
+        }        
     }
     
     @GetMapping("/listar")
